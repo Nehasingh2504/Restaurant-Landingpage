@@ -1,0 +1,577 @@
+{% include 'navbar.html' %} 
+{% load static %}
+<html>
+    <head>
+        <style>
+            *{ margin: 0; padding: 0;}
+            body{ background-color: orangered;}
+            .item1{ background-size: cover; background-image: url("{% static '/food.jpg' %}"); position: relative; }
+            .item1::before{
+                content: "";
+                left: 0;
+                top: 0;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, .55);
+            }
+
+            .fork{
+                animation: fork_ani 3s 3s ease forwards;               
+            }
+            @keyframes fork_ani{
+                0%{ scale: 100%}
+                50%{ scale: 200%;}
+                100%{transform:rotate(360deg); scale: 100%;}
+            } 
+            
+            .item_icon{
+                animation: item_ani 2s ease infinite;
+            }   
+            @keyframes item_ani{
+                0%{scale: 100%;}
+                50%{scale: 120%;}
+                100%{scale: 100%;}
+            }
+            #newbooktable{display: none;}
+            .item2{ background-size: cover; background-image: url("{% static '/menu_background.jpg' %}"); position: relative; }
+            .item2::before{
+                content: "";
+                left: 0;
+                top: 0;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, .55);
+            }
+            .card{
+                transition: transform 0.3s ease-in-out;
+            }
+            .card:hover{
+                transform: scale(1.04);
+            }
+            .viewbox{
+                flex-direction: column;
+                width:fit-content;
+            }
+        </style>
+    </head>
+    {% block body %}
+    {% for message in messages %}
+    <div class="modal modal-sheet position-static d-block p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-3 shadow">
+            <div class="modal-body p-4 text-center">
+            <h5 class="mb-0">{{message}}</h5>
+            </div>
+            <div class="modal-footer flex-nowrap p-0">
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><a href="/home" style="text-decoration: none;"><strong>Cancel</strong></a></button>
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal"><a href="/login" style="text-decoration: none;">Ok</a></button>
+            </div>
+        </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endblock %}
+    <body>
+        <div class="container-fluid item1 col-xxl-8 px-4 py-5 position-relative">
+            <div class="container col-xxl-8 px-4 py-5 position-relative">
+                <div class="row align-items-center g-5 py-5">
+                    <div class="col-md-6 col-lg-6">
+                        <h1 class="fw-bold fs-2 lh-1 mb-3" style="color: orangered;">
+                            Enjoy Our<br>
+                            Delicious Meal<br>
+                        </h1>
+                        <p class="fs-5" style="color: white;">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start" id="booktablebox">
+                            <form action="../book_alert">
+                                <button type="submit" class="btn btn-warning btn-md px-3 me-md-2 fw-bold" id="booktable"> BOOK TABLE</button>
+                            </form>
+                            <button type="button" class="btn btn-warning btn-md px-3 me-md-2 fw-bold" id="newbooktable"><a href="/book" style="text-decoration: none; color: black;">BOOK TABLE</a></button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 d-flex justify-content-center">
+                        <img src="{% static '/hero_image.png' %}" class="fork d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="300" height="300" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid p-5" style="background-color: orangered;">
+        <div class="container px-5 py-2 rounded-5" id="hanging-icons" style="background-color: burlywood;">
+            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+                <div class="col d-flex align-items-start">
+                    <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                        <img src="{% static '/delivery.png' %}" class="item_icon" width="50" height="50">
+                    </div>
+                    <div>
+                        <p style="font-size: 17px; font-weight: 800;">Fast Home Delivery</p>
+                        <p style="font-size: 13px;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-start">
+                    <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                        <img src="{% static '/discount.png' %}" class="item_icon" width="50" height="50">
+                    </div>
+                    <div>
+                        <p style="font-size: 17px; font-weight: 800;">Discount Voucher</p>
+                        <p style="font-size: 13px;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+                <div class="col d-flex align-items-start">
+                    <div class="icon-square text-body-emphasis d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                        <img src="{% static '/fresh.png' %}" class="item_icon" width="50" height="50">
+                    </div>
+                    <div>
+                        <p style="font-size: 17px; font-weight: 800;">Fresh Healthy Food</p>
+                        <p style="font-size: 13px;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="item2 py-3">
+            <center><h1 class="position-relative py-5"><i style="color: white;">Our</i><font style="color: orangered;"> MENU</font></h1></center>
+            <div class="albumcontainer ">
+                <div class="d-flex align-items-center justify-content-center p-4 py-md-3 mb-3 position-relative">
+                    <form class="w-75 me-3" role="search">
+                        <input type="search" id="searchtext" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                    </form>
+                    <button type="button" id="searchbox" class="btn btn-warning">Search</button>
+                </div>
+                <div class="album mb-5">
+                    <div class="container rounded-5 position-relative">
+                        <div class="moredish"></div>
+                        <div id="myCarousel" class="carousel slide mt-5 mb-3 pointer-event mt-3" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+                                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="bd-placeholder-img" width="100%" height="100%" src="{% static '/grid_image1.png' %}" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="bd-placeholder-img" width="100%" height="100%" src="{% static '/grid_image5.png' %}" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                </div>
+                                <div class="carousel-item">
+                                    <img class="bd-placeholder-img" width="100%" height="100%" src="{% static '/grid_image7.jpg' %}" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3" id="cards">
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{% static '/grid_image1.png' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{% static '/grid_image3.png' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{% static '/grid_image4.jpg' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{% static '/grid_image5.png' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{% static '/grid_image6.jpg' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{% static '/grid_image7.jpg' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{% static '/grid_image8.jpg' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card shadow-sm">
+                                    <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{% static '/grid_image9.jpg' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <div class="card-body">
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+        search=document.querySelector('#searchbox')
+        searchtext=document.querySelector('#searchtext')
+        album=document.querySelector('.moredish')
+        
+        search.addEventListener('click',(e) => {
+            fetchrecipes(searchtext.value)
+        })
+        const fetchrecipes = async(query) => {
+            moredish=document.querySelector('.moredish')
+            moredish.innerHTML=''
+            data= await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
+            response= await data.json();
+            document.querySelector('#myCarousel').style.display='none'
+            document.querySelector('#cards').style.display='none'
+            div=document.createElement('div')
+            if(response.meals!=null){
+                div.className = "row row-cols-2 row-cols-sm-2 row-cols-md-3 g-3";
+                response.meals.forEach(meal => {
+                    div.innerHTML+=`
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="${meal.strMealThumb}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                                <div class="card-body text-center">
+                                    <h3 class="card-text">${meal.strMeal}</h3>
+                                    <p class="card-text"><b>${meal.strArea}</b> dish</p>
+                                    <p class="card-text">Belong to <b>${meal.strCategory}</b> Category</p>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                });
+            }
+            else{
+                div.innerHTML+=`
+                        <h1 class="d-flex justify-content-center text-light">ITEM NOT FOUND!!..</h1>
+                    `
+            }
+            album.append(div)
+        }            
+    </script>
+        <div class="container-fluid p-4 mb-3" style="background-color: burlywood;">
+            <div class="container">
+                <div id="myCarousel" class="carousel slide mb-6 pointer-event" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+                        <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class=""></button>
+                    </div>
+                    <div class="carousel-inner album py-5">
+                        <center><h2 class="mb-4">COSTOMER <font style="color: orangered; font-weight: 400;margin-bottom: 10px; font-family: cursive;">FEEDBACK</font></h2></center>
+                        <div class="carousel-item active rounded">
+                            <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4">
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item rounded">
+                            <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4">
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4 g-3">
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 card shadow-sm align-items-center text-center p-3">
+                                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="{% static '/customer4.png' %}" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                                    <div class="card-body">
+                                        <h2 class="fw-normal">Review</h2>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/star.png '%}" width="25" height="25">
+                                                <img src="{% static '/rating.png '%}" width="25" height="25">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="py-3" style="background-color: burlywood;">
+            <div class="container-fluid col-xxl-8 px-3 py-2 position-relative" style="background-color: orangered;">
+                <div class="container col-xxl-8 py-3 position-relative shadow rounded-3 p-5 m-5" style="background-color: burlywood;">
+                    <div class="row align-items-center g-5 py-5">
+                        <div class="col-md-6 col-lg-6">
+                            <h1 class="fw-bold fs-2 lh-1 mb-3" style="color: orangered;">ABOUT US</h1>
+                            <p class="lead fs-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam recusandae consequuntur, aut voluptas eius odit minus reiciendis, iusto corrupti temporibus labore laborum hic placeat eligendi blanditiis delectus, eos illum adipisci?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, praesentium voluptates at minima repellat veritatis dicta, culpa temporibus saepe fugiat sint in corporis nostrum quia perferendis? Error rem modi harum.
+                            </p>
+                        </div>
+                        <div class="col-md-6 col-lg-6 d-flex justify-content-center">
+                            <img src="{% static '/hero_image.png' %}" class="fork d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="300" height="300" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mb-5">
+                <center><h1 class="mb-5 mt-4">OUR GOLDEN CHEFS</h1></center>
+                <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-xl-4 g-3">
+                    <div class="col-md-3 ">
+                        <div class="card shadow-sm text-center">
+                            <img class="bd-placeholder-img card-img-top" width="90%" height="250" src="{% static '/customer.png' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <div class="card-body p-3">
+                                <h3 class="d-flex justify-content-center">Chef name</h3>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card shadow-sm text-center">
+                            <img class="bd-placeholder-img card-img-top" width="90%" height="250" src="{% static '/customer.png' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <div class="card-body p-3">
+                                <h3 class="d-flex justify-content-center">Chef name</h3>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card shadow-sm text-center">
+                            <img class="bd-placeholder-img card-img-top" width="90%" height="250" src="{% static '/customer.png' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <div class="card-body p-3">
+                                <h3 class="d-flex justify-content-center">Chef name</h3>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card shadow-sm text-center">
+                            <img class="bd-placeholder-img card-img-top" width="90%" height="250" src="{% static '/customer.png' %}" class="customer_img" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <div class="card-body p-3">
+                                <h3 class="d-flex justify-content-center">Chef name</h3>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mb-5">
+                <center><h1 class="mb-3" style="color: orangered;">OUR STORY</h1></center>
+                <p class="bol">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis aliquid voluptatibus accusamus necessitatibus iure, repudiandae dolorum dolore officiis nostrum, quas minima ducimus, laborum distinctio sit libero eligendi! Aperiam, harum alias.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis quibusdam laborum fugiat! Neque natus magni, excepturi cupiditate totam incidunt aliquid provident necessitatibus aspernatur, dolor voluptate culpa officiis nemo ab eos.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit dicta quam corporis non officia commodi temporibus suscipit voluptate! Nihil voluptatibus repellat officia eius commodi ipsam eveniet non deleniti eos vel!
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Culpa, ullam ut? Quaerat dignissimos enim corporis quidem nesciunt voluptatem ipsam iusto qui, accusantium excepturi nostrum veniam, dolores laboriosam voluptatibus, optio ab?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos assumenda, amet numquam, corporis necessitatibus et illum voluptatem labore incidunt praesentium cumque iusto maxime iure ad inventore velit blanditiis soluta. Eum.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
+{% include 'footer.html' %} 
+{% load static %}

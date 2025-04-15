@@ -1,0 +1,73 @@
+{% include 'navbar.html' %} 
+{% load static %}
+<html>
+    <head>
+        <style>
+          .item1{ background-size: cover; background-image: url("{% static '/restroimg.jpg' %}"); position: relative; }
+          .item1::before{
+              content: "";
+              left: 0;
+              top: 0;
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, .55);
+          }
+        </style>
+        <script>
+            function closealert() {
+                alertbox=document.querySelector('#closealert')
+                alertbox.style.display='none'
+            }
+        </script>
+    </head>
+    {% block body %}
+    {% for message in messages %}
+    <div class="modal modal-sheet position-static d-block p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content rounded-3 shadow">
+            <div class="modal-body p-4 text-center">
+              <h5 class="mb-0">{{message}}</h5>
+            </div>
+            <div class="modal-footer flex-nowrap p-0">
+              <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><a href="/signup" style="text-decoration: none;"><strong>Cancel</strong></a></button>
+              <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal"><a href="/signup" style="text-decoration: none;">Ok</a></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% endblock %}
+    <body class="bg-body-secondary item1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="modal modal-sheet position-relative d-block" tabindex="-1" role="dialog" id="modalSignin">
+                    <div class="p-5 modal-dialog" role="document">
+                        <div class="modal-content rounded-4 shadow">
+                            <div class="modal-header p-5 pb-4 border-bottom-0">
+                                <h1 class="fw-bold mb-0 fs-3">Sign up for free</h1>
+                            </div>
+                  
+                            <div class="modal-body p-5 pt-0">
+                                <form action="../signup_detail" method="get">
+                                    <div class="form-floating mb-3">
+                                        <input type="email" name="email" class="form-control rounded-3 email" id="floatingInput" placeholder="name@example.com">
+                                        <label for="floatingInput">Email address</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="password" name="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                                        <label for="floatingPassword">Password</label>
+                                    </div>
+                                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" onclick="check()">Sign up</button>
+                                    <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+                                </form>
+                            </div>
+                        </div>
+                    </div>                   
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+{% include 'footer.html' %} 
+{% load static %}

@@ -1,0 +1,51 @@
+{% include 'navbar_after.html' %} 
+{% load static %}
+<html>
+  <head>
+    <style>
+      .item1{ background-size: cover; background-image: url("{% static '/restroimg.jpg' %}"); position: relative; }
+      .item1::before{
+          content: "";
+          left: 0;
+          top: 0;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, .55);
+      }
+    </style>
+  </head>
+  <body class="item1">
+      <div class="container-fluid">
+        <div class="modal modal-sheet position-static d-block" style="color: white;" tabindex="-1" role="dialog" id="modalSignin">
+          <div class="modal-dialog" role="document">
+            <form action="../insert_booking" method="get" class="modal-content rounded-4 shadow" style="background-color: transparent;">
+              <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                  <span style="color: orangered;font-size: 30px;font-weight: 800;">Restoran</span>
+                  <img class="me-1" width="35" height="27" src="{% static '/cutlery.png' %}">
+              </div>
+              <h1 class="h4 mt-3 mb-3 fw-bold d-flex justify-content-center" style="color: orangered;">BOOK YOUR TABLE</h1>
+              
+              <label class="fw-semibold">Name</label>
+              <input type="text" class="form-control" name="name" id="floatingInput" placeholder="Enter your Name"><br>
+
+              <label class="fw-semibold">Email</label>
+              <input type="email" class="form-control" name="email" id="floatingInput" placeholder="Enter your Email"><br>
+
+              <label class="fw-semibold">Date</label>
+              <input type="date" class="form-control" name="date" id="floatingInput"><br>
+
+              <label class="fw-semibold">Time</label>
+              <input type="time" class="form-control" name="time" id="floatingInput"><br>
+
+              <button class="btn btn-warning w-100 py-2" type="submit">Book Now</button>
+              <p class="mt-5 mb-3 text-secondary">© 2017–2024</p>
+            </form>
+          </div>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
+{% include 'footer.html' %} 
+{% load static %}

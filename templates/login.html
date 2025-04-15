@@ -1,0 +1,78 @@
+{% include 'navbar.html' %} 
+{% load static %}
+<html>
+  <head>
+    <style>
+      .item1{ background-size: cover; background-image: url("{% static '/restroimg.jpg' %}"); position: relative; }
+      .item1::before{
+          content: "";
+          left: 0;
+          top: 0;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, .55);
+      }
+    </style>
+  </head>
+  <script>
+    function closealert() {
+        alertbox=document.querySelector('#closealert')
+        alertbox.style.display='none'
+    }
+  </script>
+  {% block body %}
+  {% for message in messages %}
+  <div class="modal modal-sheet position-static d-block p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-3 shadow">
+        <div class="modal-body p-4 text-center">
+          <h5 class="mb-0">{{message}}</h5>
+        </div>
+        <div class="modal-footer flex-nowrap p-0">
+          <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><a href="/login" style="text-decoration: none;"><strong>Cancel</strong></a></button>
+          <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal"><a href="/signup" style="text-decoration: none;">Ok</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endblock %}
+    <body class="bg-body-secondary item1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="modal modal-sheet position-static d-block" style="color: white;" tabindex="-1" role="dialog" id="modalSignin">
+                    <div class="p-5 modal-dialog" role="document">
+                        <form action="../login_detail" method="get" class="p-5 modal-content bg-dark rounded-4 shadow">
+                            <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                                <span style="color: orangered;font-size: 30px;font-weight: 800;">Restoran</span>
+                                <img class="me-1" width="35" height="27" src="{% static '/cutlery.png' %}">
+                            </div>
+                          <h1 class="h4 mt-3 mb-3 fw-bold d-flex justify-content-center">Please Login</h1>
+                      
+                          <div class="form-floating m-1">
+                            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput" class="text-secondary">Email address</label>
+                          </div>
+                          <div class="form-floating m-1">
+                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <label for="floatingPassword" class="text-secondary">Password</label>
+                          </div>
+                      
+                          <div class="form-check text-start my-3">
+                            <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              Remember me
+                            </label>
+                          </div>
+                          <button class="btn btn-primary w-100 py-2" id="login" name="login" type="submit">Login</button>
+                          <p class="mt-5 mb-3 text-secondary">© 2017–2024</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+{% include 'footer.html' %} 
+{% load static %}
