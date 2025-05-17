@@ -13,7 +13,7 @@ A modern and responsive **restaurant landing page** powered by Django, designed 
 
 ## 🌐 Live Demo
 
-🔗 [Click here to view the live demo](https://drive.google.com/file/d/16yFXfw33VuF5slrTzJyjI2cC9mMdgoCh/view?usp=sharing) 
+🔗 
 
 ---
 
