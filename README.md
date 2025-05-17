@@ -18,16 +18,16 @@ A modern and responsive **restaurant landing page** powered by Django, designed 
 ---
 
 ## 🖼️ Preview
-###  Home page
+###  📸Home page
 ![Home page](https://github.com/user-attachments/assets/d2d33fb2-1c4e-49bb-8c40-5fed3eab7b7e)
 
-###  Book table page
+###  📸Book table page
 ![Book table page](https://github.com/user-attachments/assets/af2983ae-06a3-4bf3-a9c5-0db5851ab9e7)
 
-###  Login page
+###  📸Login page
 ![Login page](https://github.com/user-attachments/assets/e62bc2bb-4ca3-4540-aa4c-f7848a62d16f)
 
-###  Signup page
+###  📸Signup page
 ![Signup page](https://github.com/user-attachments/assets/71b28e8e-4dbf-45e2-8319-d64518c7f156)
 
 
