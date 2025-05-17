@@ -14,7 +14,7 @@ A modern and responsive **restaurant landing page** powered by Django, designed 
 ## 🌐 Live Demo
 
 🔗 [Live Demo Coming Soon]  
-*(You can host it on Render, PythonAnywhere, or locally with `runserver`)*
+https://drive.google.com/file/d/16yFXfw33VuF5slrTzJyjI2cC9mMdgoCh/view?usp=sharing
 
 ---
 
@@ -30,11 +30,19 @@ A modern and responsive **restaurant landing page** powered by Django, designed 
 
 - 🔥 Fully responsive design using **Bootstrap 5**
 - 🍲 Dynamic **Menu** and **Specials** rendered from database
-- 📬 Contact form with backend handling
-- 📍 Location and working hours display
+- 🧾 Online reservation system with backend handling
 - 🌐 API integration for interactive features (e.g. reviews or reservations)
 - 💾 Uses **SQLite** as the default database (via DB Browser for SQLite)
 - ⚙️ Admin dashboard for content management
+
+---
+
+## 👤 Authentication System
+
+- 🔐 Secure password hashing with Django's auth system
+- ✅ Built-in session management for login/logout
+- 📝 Custom signup form integrated with database
+- 💬 Only logged-in users can reserve table
 
 ---
 
@@ -47,9 +55,6 @@ A modern and responsive **restaurant landing page** powered by Django, designed 
 | **Backend**     | Python, Django                  |
 | **Database**    | SQLite (DB Browser for SQLite) |
 | **API**         | Django REST Framework / Custom |
-| **Tools**       | VS Code, DB Browser, Postman   |
+| **Tools**       | VS Code, DB Browser   |
 
 ---
-
-## 📁 Project Structure
-
